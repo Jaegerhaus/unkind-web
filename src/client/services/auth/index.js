@@ -50,6 +50,10 @@ class AuthService {
         console.log("AuthService.authenticate", error);
       });
   }
+
+  unauthenticate() {
+    return this._firebase.auth().signOut();
+  }
 }
 
 export default AuthService;

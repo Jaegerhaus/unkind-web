@@ -19,7 +19,7 @@ kernel.service("document", () => document);
 kernel.service("firebase", () => {
   const service = firebase.initializeApp(config.firebase);
   service.firestore().settings(config.firestore);
-  return service;
+  return firebase;
 });
 
 kernel.service("storageService", () => window.localStorage); //TODO: fallback?

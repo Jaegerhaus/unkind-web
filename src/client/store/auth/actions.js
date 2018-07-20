@@ -19,8 +19,18 @@ const authenticate = () => (dispatch, getState, services) => {
     });
 };
 
+const unauthenticate = () => (dispatch, getState, services) => {
+  dispatch(setLoading(true));
+  services.authService
+    .unauthenticate()
+    .then(user => {
+      dispatch(setLoading(false));
+    });
+};
+
 export default {
   setUser,
   setLoading,
   authenticate,
+  unauthenticate,
 };

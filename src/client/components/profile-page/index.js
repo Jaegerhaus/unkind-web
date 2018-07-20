@@ -2,12 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Header from "components/header";
-import { selectors as authSelectors } from "store/auth";
+import {
+  actions as authActions,
+  selectors as authSelectors,
+} from "store/auth";
 
 import "./index.scss";
 
 const ProfilePageView = ({
   user,
+  unauthenticate,
 }) => (
   <div className="ProfilePage">
     <Header/>
@@ -26,12 +30,26 @@ const ProfilePageView = ({
                       </figure>
                     </div>
                     <div className="media-content">
-                      <p className="title is-4">{user.displayName}</p>
-                      <p className="subtitle is-6">{user.email}</p>
+                      <p className="title is-4">
+                        {user.displayName}
+                      </p>
+                      <p className="subtitle is-6">
+                        {user.email}
+                      </p>
                       <p className="tags">
                         {user.roles.map(role =>
-                          <span className="tag">{role}</span>
+                          <span className="tag" key={role}>{role}</span>
                         )}
+                      </p>
+                      <p className="control">
+                        <button className="button is-danger" onClick={unauthenticate}>
+                          <span>
+                            Sign out
+                          </span>
+                          <span class="icon">
+                            <i class="fa fa-sign-out"></i>
+                          </span>
+                        </button>
                       </p>
                     </div>
                   </div>
@@ -51,6 +69,10 @@ const mapState = state => ({
   user: authSelectors.user(state),
 });
 
-const ProfilePage = connect(mapState)(ProfilePageView);
+const mapDispatch = dispatch => ({
+  unauthenticate: e => dispatch(authActions.unauthenticate()),
+});
+
+const ProfilePage = connect(mapState, mapDispatch)(ProfilePageView);
 
 export default ProfilePage;

@@ -2,7 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { selectors as authSelectors, actions as authActions } from "store/auth";
+import {
+  actions as authActions,
+  selectors as authSelectors,
+} from "store/auth";
 
 const AuthView = ({
   user,
@@ -13,10 +16,14 @@ const AuthView = ({
     ? <Link to="/profile" className="navbar-item">
         Profile
       </Link>
-    : <a href="#" onClick={authenticate} className="navbar-item">
-        {isLoading && <a className="button is-loading"></a>}
-        Sign in
-      </a>
+    : <div className="navbar-item">
+        <button
+          onClick={authenticate}
+          className={`button is-text is-inverted ${isLoading && "is-loading"}`}
+          >
+          Sign in
+        </button>
+      </div>
 );
 
 const mapState = state => ({
@@ -25,7 +32,10 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  authenticate: e => { e.preventDefault(); dispatch(authActions.authenticate()); },
+  authenticate: e => {
+    e.preventDefault();
+    dispatch(authActions.authenticate());
+  },
 });
 
 const Auth = connect(mapState, mapDispatch)(AuthView);

@@ -6,6 +6,7 @@ import {
 
 import HomePage from "components/home-page";
 import ErrorPage from "components/error-page";
+import ProfilePage from "components/profile-page";
 
 import RouteHandler from "./handler";
 
@@ -15,6 +16,7 @@ export default (
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/error" component={ErrorPage} />
+      <Route path="/profile" component={ProfilePage} />
       <Route component={ErrorPage} />
     </Switch>
   </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Auth from "./auth";
+
 import "./index.scss";
 
 const HeaderView = ({
@@ -23,12 +25,7 @@ const HeaderView = ({
       </div>
       <div className={`navbar-menu ${activeClass}`}>
         <div className="navbar-end">
-          <Link to="/feature" className="navbar-item">
-            Feature
-          </Link>
-          <a className="navbar-item" target="_blank" href="https://github.com/jkoreska/unkind/issues">
-            Help
-          </a>
+          <Auth />
         </div>
       </div>
     </nav>

@@ -24,6 +24,8 @@ import "./scss/index.scss";
 import App from "components/app";
 import ErrorPage from "components/error-page";
 
+import { actions as authActions } from "store/auth";
+
 const history = createHistory();
 
 const store = createStore(
@@ -51,6 +53,20 @@ const app =
 
 const mountpoint =
   document.getElementById("App");
+
+firebase
+  .initializeApp({
+    apiKey: "AIzaSyDgiSavIcuxE5m3f-HE9ls_YM5N_v5mLVI",
+    authDomain: "unkind-210718.firebaseapp.com",
+    databaseURL: "https://unkind-210718.firebaseio.com",
+    projectId: "unkind-210718",
+    storageBucket: "",
+    messagingSenderId: "643903374568",
+  })
+  .auth()
+  .onAuthStateChanged(user =>
+    store.dispatch(authActions.setUser(user))
+  );
 
 try {
   ReactDOM.render(app, mountpoint);

@@ -2,6 +2,8 @@ import Bottle from "bottlejs";
 
 import "whatwg-fetch";
 
+import firebase from "firebase";
+
 import config from "./config";
 import CookieService from "services/cookie";
 import AuthService from "services/auth";
@@ -14,7 +16,11 @@ kernel.service("history", () => window.history);
 kernel.service("fetch", () => fetch.bind(window));
 kernel.service("document", () => document);
 
-kernel.service("firebase", () => window.firebase);
+kernel.service("firebase", () => {
+  const service = firebase.initializeApp(config.firebase);
+  service.firestore().settings(config.firestore);
+  return service;
+});
 
 kernel.service("storageService", () => window.localStorage); //TODO: fallback?
 

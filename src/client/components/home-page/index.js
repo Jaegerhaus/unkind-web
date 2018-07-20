@@ -13,12 +13,17 @@ const HomePage = () =>
         <div className="container">
           <div className="columns is-mobile">
             <div className="column">
-              <h1 className="title is-2">
-                Unkind S.O.G.
+              <h1 className="title is-1">
+                Unkind
               </h1>
-              <h2 className="subtitle">
-                Inter Pericula Intrepidi
-              </h2>
+              <p className="subtitle is-6 is-italic">
+                <span className="HomePage-allcaps">Inter Pericula Intrepidi</span>
+                &mdash;
+                "Fearless in the face of danger"
+              </p>
+              <p className="is-size-4">
+                Unkind Special Operations Group. Magfed paintball. Ontario, Canada.
+              </p>
             </div>
             <div className="column is-one-quarter">
               <img className="HomePage-heroLogo" src="" title="Unkind" />
@@ -29,11 +34,6 @@ const HomePage = () =>
     </section>
     <section className="HomePage-content section">
       <div className="container">
-        <div className="container has-text-centered">
-          <p className="is-size-5">
-            Magfed paintball. Ontario, Canada.
-          </p>
-        </div>
       </div>
     </section>
   </div>;

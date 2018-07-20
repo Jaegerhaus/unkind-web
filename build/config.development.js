@@ -36,6 +36,7 @@ export default merge(config, {
     },
     client: {
       mode: "development",
+      watch: true,
       entry: {
         app: "./src/client/index.js",
       },

@@ -19,11 +19,6 @@ gulp.task("clean", done => {
   rimraf(config.path.output, done);
 });
 
-gulp.task("watch", () => {
-  config.watch = true;
-  gulp.start("client");
-});
-
 gulp.task("server", done => {
   webpack(config.webpack.server, (err, stats) => {
     console.log(stats.toString(config.webpackStatsPresets.minimal));
@@ -34,7 +29,5 @@ gulp.task("server", done => {
 gulp.task("client", done => {
   webpack(config.webpack.client, (err, stats) => {
     console.log(stats.toString(config.webpackStatsPresets.minimal));
-    if (!config.watch)
-      done();
   });
 });

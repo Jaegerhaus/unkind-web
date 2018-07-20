@@ -9,6 +9,10 @@
     content: url("../../scss/img/logo.png");
     max-width: 100%;
   }
+  &-allcaps {
+    font-variant: small-caps;
+    font-size: 1.2em;
+  }
 }
 
 .is-jumbo {

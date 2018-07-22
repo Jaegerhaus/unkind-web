@@ -25,6 +25,15 @@ const HeaderView = ({
       </div>
       <div className={`navbar-menu ${activeClass}`}>
         <div className="navbar-end">
+          <Link to="/media" className="navbar-item">
+            Media
+          </Link>
+          <Link to="/events" className="navbar-item">
+            Events
+          </Link>
+          <Link to="/roster" className="navbar-item">
+            Roster
+          </Link>
           <Auth />
         </div>
       </div>

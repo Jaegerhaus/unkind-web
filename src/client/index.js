@@ -59,6 +59,13 @@ const app =
 const mountpoint =
   document.getElementById("App");
 
+window.app = {
+  store,
+  router,
+  services,
+  mountpoint,
+};
+
 try {
   ReactDOM.render(app, mountpoint);
 } catch (e) {

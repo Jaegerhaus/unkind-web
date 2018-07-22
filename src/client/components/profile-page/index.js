@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Header from "components/header";
+import ApplicationForm from "components/application-form";
+
 import {
   actions as authActions,
   selectors as authSelectors,
@@ -46,8 +48,8 @@ const ProfilePageView = ({
                           <span>
                             Sign out
                           </span>
-                          <span class="icon">
-                            <i class="fa fa-sign-out"></i>
+                          <span className="icon">
+                            <i className="fa fa-sign-out"></i>
                           </span>
                         </button>
                       </p>
@@ -57,6 +59,11 @@ const ProfilePageView = ({
                   </div>
                 </div>
               </div>
+              {!user.roles.length &&
+                <ApplicationForm
+                  user={user}
+                />
+              }
             </div>
           </div>
       }

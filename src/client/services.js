@@ -7,6 +7,7 @@ import firebase from "firebase";
 import config from "./config";
 import CookieService from "services/cookie";
 import AuthService from "services/auth";
+import ProfileService from "services/profile";
 
 const kernel = new Bottle();
 
@@ -26,5 +27,6 @@ kernel.service("storageService", () => window.localStorage); //TODO: fallback?
 
 kernel.service("cookieService", CookieService, "config", "document");
 kernel.service("authService", AuthService, "config", "firebase");
+kernel.service("profileService", ProfileService, "config", "firebase");
 
 export default kernel.container;

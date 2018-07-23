@@ -1,0 +1,5 @@
+
+export default {
+  PROFILE_LOADING: "PROFILE_LOADING",
+  PROFILE_LOADED: "PROFILE_LOADED",
+};

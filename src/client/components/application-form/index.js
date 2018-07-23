@@ -1,9 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import moment from "moment";
 import injectServices from "modules/inject-services";
-
-import Header from "components/header";
 
 import "./index.scss";
 
@@ -44,15 +41,15 @@ const ApplicationFormView = ({
             </label>
           </div>
         </div>
-        <div className="field">
+        <div className="field is-grouped is-grouped-right">
           <div className="control">
-            <button className={`button is-success ${loading ? "is-loading" : ""}`}>
-              {updated ? "Submitted" : "Submit"}
-            </button>
-            &nbsp;
             <span className="is-size-7">
               {updated ? moment(updated).fromNow() : ""}
             </span>
+            &nbsp;
+            <button className={`button is-success ${loading ? "is-loading" : ""}`}>
+              {updated ? "Submitted" : "Submit"}
+            </button>
           </div>
         </div>
       </form>
@@ -114,7 +111,7 @@ class ApplicationForm extends React.Component {
     return this._firebase
       .firestore()
       .doc(`applications/${this.props.user.uid}`)
-      .update({
+      .set({
         summary,
         birthdate,
         agreed,

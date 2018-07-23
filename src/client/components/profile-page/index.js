@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Header from "components/header";
 import ApplicationForm from "components/application-form";
+import ProfileForm from "components/profile-form";
 
 import {
   actions as authActions,
@@ -59,11 +60,20 @@ const ProfilePageView = ({
                   </div>
                 </div>
               </div>
+
+              <hr/>
+
               {!user.roles.length &&
                 <ApplicationForm
                   user={user}
                 />
               }
+              {user.roles.includes("member") &&
+                <ProfileForm
+                  user={user}
+                />
+              }
+
             </div>
           </div>
       }

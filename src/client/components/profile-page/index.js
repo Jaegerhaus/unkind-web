@@ -64,14 +64,10 @@ const ProfilePageView = ({
               <hr/>
 
               {!user.roles.length &&
-                <ApplicationForm
-                  user={user}
-                />
+                <ApplicationForm user={user} />
               }
               {user.roles.includes("member") &&
-                <ProfileForm
-                  user={user}
-                />
+                <ProfileForm />
               }
 
             </div>

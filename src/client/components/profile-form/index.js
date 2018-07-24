@@ -2,6 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 
+import ProfilePhotos from "components/profile-photos";
+
+import {
+  selectors as authSelectors,
+} from "store/auth";
 import {
   actions as profileActions,
   selectors as profileSelectors,
@@ -10,11 +15,13 @@ import {
 import "./index.scss";
 
 const ProfileFormView = ({
+  user,
   loading,
   form,
   update,
   submit,
   updated,
+  dirty,
 }) =>
   <div className="ProfileForm">
     <h2 className="title">
@@ -52,12 +59,23 @@ const ProfileFormView = ({
           </span>
         </div>
         <div className="control">
-          <button className={`button is-success ${loading ? "is-loading" : ""}`}>
+          <button
+            className={`button is-success ${loading ? "is-loading" : ""}`}
+            disabled={loading || !dirty}
+            >
             Save
           </button>
         </div>
       </div>
     </form>
+
+    <ProfilePhotos
+      user={user}
+      loading={loading}
+      photos={form.photos}
+      submit={submit}
+    />
+
   </div>
 
 class ProfileFormController extends React.Component {
@@ -66,10 +84,12 @@ class ProfileFormController extends React.Component {
     super(props);
     this.state = {
       loading: false,
+      dirty: false,
       form: {
         isPublic: false,
         callsign: "",
         loadout: "",
+        photos: [],
       },
     };
   }
@@ -85,9 +105,11 @@ class ProfileFormController extends React.Component {
           isPublic: props.profile.isPublic,
           callsign: props.profile.callsign,
           loadout: props.profile.loadout,
+          photos: props.profile.photos || [],
           photoURL: props.user.photoURL,
         },
         updated: props.profile.updated,
+        dirty: false,
       });
     }
   }
@@ -101,6 +123,7 @@ class ProfileFormController extends React.Component {
             ? e.target.checked
             : e.target.value,
         },
+        dirty: true,
       });
   }
 
@@ -120,6 +143,7 @@ class ProfileFormController extends React.Component {
 }
 
 const mapState = state => ({
+  user: authSelectors.user(state),
   profile: profileSelectors.data(state),
   loading: profileSelectors.loading(state),
 });

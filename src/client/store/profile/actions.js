@@ -10,6 +10,11 @@ const loaded = profile => ({
   payload: profile,
 });
 
+const loadedAll = profiles => ({
+  type: types.PROFILE_LOADED_ALL,
+  payload: profiles,
+});
+
 const load = uid => (dispatch, getState, services) => {
   dispatch(loading(true));
   services.profileService
@@ -38,9 +43,24 @@ const store = (uid, profile) => (dispatch, getState, services) => {
     });
 };
 
+const loadAll = uid => (dispatch, getState, services) => {
+  dispatch(loading(true));
+  services.profileService
+    .loadAll()
+    .then(profiles => {
+      dispatch(loading(false));
+      dispatch(loadedAll(profiles));
+    })
+    .catch(e => {
+      console.log("profile.loadAll", e);
+      dispatch(loading(false));
+    });
+};
+
 export default {
   load,
   loading,
   loaded,
   store,
+  loadAll,
 };

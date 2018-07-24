@@ -31,6 +31,19 @@ class ProfileService {
       }));
   }
 
+  loadAll() {
+    return this._firebase
+      .firestore()
+      .collection("profiles")
+      .where("isPublic", "==", true)
+      .get()
+      .then(query =>
+        query.docs.reduce((profiles, profile) =>
+          [ ...profiles, profile.data() ]
+        , [])
+      );
+  }
+
 }
 
 export default ProfileService;

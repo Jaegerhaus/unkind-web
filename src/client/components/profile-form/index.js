@@ -85,6 +85,7 @@ class ProfileFormController extends React.Component {
           isPublic: props.profile.isPublic,
           callsign: props.profile.callsign,
           loadout: props.profile.loadout,
+          photoURL: props.user.photoURL,
         },
         updated: props.profile.updated,
       });

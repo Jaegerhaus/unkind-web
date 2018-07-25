@@ -17,9 +17,9 @@ const RosterPageView = ({
     <Header/>
     <section className="section RosterPage-content">
       <div className="container">
-        <div className="columns">
+        <div className="columns is-multiline is-mobile">
         {profiles.map(profile =>
-          <div className="column is-one-quarter-desktop is-one-third-tablet" key={profile.callsign}>
+          <div className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile" key={profile.callsign}>
             <div className="card RosterPage-profile">
               <div className="card-image">
                 <figure className="image">
@@ -28,7 +28,7 @@ const RosterPageView = ({
               </div>
               <div className="card-content">
                 <div className="content">
-                  <p className="title">
+                  <p className="title is-4">
                     {profile.callsign}
                   </p>
                   <p className="subtitle is-7">

@@ -66,12 +66,15 @@ const ProfileVideosView = ({
         </div>
       </form>
     </div>
+    <hr/>
     <div>
     {(profile.videos || []).map(video =>
       <div className="media" key={video.url}>
         <div className="media-left">
           <p className="image ProfileVideos-thumbnail">
-            <img src={video.thumbnail} alt={video.title} />
+            <a href={video.url} target="_blank">
+              <img src={video.thumbnail} alt={video.title} />
+            </a>
           </p>
         </div>
         <div className="media-content">
@@ -89,6 +92,7 @@ const ProfileVideosView = ({
       </div>
     )}
     </div>
+    <hr/>
   </div>
 
 @injectServices

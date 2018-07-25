@@ -66,12 +66,22 @@ const ProfilePhotosView = ({
           <div className="column">
             <div className="content">
               <button className="button is-outlined is-info" onClick={e => setProfilePhoto(selected)}>
-                Set as profile
+                <span className="icon">
+                  <i className="fa fa-user"></i>
+                </span>
+                <span>
+                  Set as profile
+                </span>
               </button>
             </div>
             <div className="content">
               <button className="button is-outlined is-danger" onClick={e => remove(selected)}>
-                Delete
+                <span className="icon">
+                  <i className="fa fa-trash"></i>
+                </span>
+                <span>
+                  Delete
+                </span>
               </button>
             </div>
             <div className="content">
@@ -83,10 +93,11 @@ const ProfilePhotosView = ({
         </div>
       </div>
     }
+    <hr/>
     <div className="ProfilePhotos-photos">
-      <div className="columns is-mobile">
+      <div className="columns is-multiline is-mobile">
       {(profile.photos || []).map(photo =>
-        <div className="column" key={photo.url}>
+        <div className="column is-one-quarter" key={photo.url}>
           <figure className="image is-square">
             <img src={photo.url} alt={photo.name} onClick={e => select(photo)} />
           </figure>
@@ -94,6 +105,7 @@ const ProfilePhotosView = ({
       )}
       </div>
     </div>
+    <hr/>
   </div>
 
 class ProfilePhotosController extends React.Component {

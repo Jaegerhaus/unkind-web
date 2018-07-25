@@ -16,11 +16,13 @@ const loading = (state, action) =>
 
 const loaded = (state, action) =>
   Object.assign({}, state, {
+    ...state,
     data: action.payload,
   });
 
 const loadedAll = (state, action) =>
   Object.assign({}, state, {
+    ...state,
     all: action.payload,
   });
 

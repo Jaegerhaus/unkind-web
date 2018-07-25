@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 
-import ProfilePhotos from "components/profile-photos";
-
 import {
   selectors as authSelectors,
 } from "store/auth";
@@ -68,14 +66,6 @@ const ProfileFormView = ({
         </div>
       </div>
     </form>
-
-    <ProfilePhotos
-      user={user}
-      loading={loading}
-      photos={form.photos}
-      submit={submit}
-    />
-
   </div>
 
 class ProfileFormController extends React.Component {
@@ -83,47 +73,39 @@ class ProfileFormController extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false,
       dirty: false,
-      form: {
-        isPublic: false,
-        callsign: "",
-        loadout: "",
-        photos: [],
-      },
+      form: this.mapForm(props.profile),
     };
   }
 
-  componentDidMount() {
-    this.props.load(this.props.user.uid);
+  mapForm(profile) {
+    return {
+      isPublic: profile.isPublic || false,
+      callsign: profile.callsign || "",
+      loadout: profile.loadout || "",
+      photos: profile.photos || [],
+    };
   }
 
   componentWillReceiveProps(props) {
-    if (props.profile !== this.props.profile) {
+    if (props.profile && props.profile !== this.props.profile)
       this.setState({
-        form: {
-          isPublic: props.profile.isPublic,
-          callsign: props.profile.callsign,
-          loadout: props.profile.loadout,
-          photos: props.profile.photos || [],
-          photoURL: props.user.photoURL,
-        },
-        updated: props.profile.updated,
         dirty: false,
+        form: this.mapForm(props.profile),
+        updated: props.profile.updated,
       });
-    }
   }
 
   update(field) {
     return e =>
       this.setState({
+        dirty: true,
         form: {
           ...this.state.form,
           [field]: ["checkbox", "radio"].includes(e.target.type)
             ? e.target.checked
             : e.target.value,
         },
-        dirty: true,
       });
   }
 
@@ -149,7 +131,6 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  load: uid => dispatch(profileActions.load(uid)),
   store: (uid, profile) => dispatch(profileActions.store(uid, profile)),
 });
 

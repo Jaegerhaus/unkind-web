@@ -1,6 +1,23 @@
 
 .ProfilePhotos {
+
   &-form {
     margin-bottom: 1em;
   }
+
+  &-photos {
+    img {
+      cursor: pointer;
+    }
+  }
+
+  &-selected {
+    margin-bottom: 1em;
+
+    .image img {
+      border-radius: 5%;
+      max-width: 100%;
+    }
+  }
+
 }

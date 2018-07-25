@@ -36,7 +36,7 @@ const HomePageView = ({
               </p>
               <p className="HomePage-heroline">
                 <Link to="/events" className="button is-large is-primary is-inverted is-outlined">
-                  Join Us
+                  Join us &raquo;
                 </Link>
               </p>
             </div>
@@ -48,7 +48,7 @@ const HomePageView = ({
       </div>
     </section>
     <section className="hero is-large has-carousel">
-      <div className="hero-carousel carousel-animated carousel-animate-fade">
+      <div className="hero-carousel carousel-animated carousel-animate-fade" data-autoplay="true">
         <div className="carousel-container">
           {profiles.map(profile =>
             profile.photos.map((photo, index) =>
@@ -70,12 +70,32 @@ const HomePageView = ({
       <div className="hero-body has-text-centered">
         <div className="container">
           <Link to="/media" className="button is-large is-primary is-inverted is-outlined">
-            More photos and videos &raquo;
+            See all photos &amp; videos &raquo;
           </Link>
         </div>
       </div>
     </section>
     {carousel.attach()}
+    <section className="hero is-medium">
+      <div className="hero-body has-text-centered">
+        <div className="container">
+          <p className="is-size-1 has-text-primary has-text-weight-light">
+          </p>
+          <p className="title is-1 has-text-primary has-text-weight-light">
+            <span className="icon">
+              <i className="fa fa-calendar"></i>
+            </span>
+            <br/>
+            <span>
+              Interested in joining us?
+            </span>
+          </p>
+          <Link to="/events" className="button is-large is-primary is-outlined">
+            See upcoming events &raquo;
+          </Link>
+        </div>
+      </div>
+    </section>
     <section className="HomePage-content section">
       <div className="container">
       </div>

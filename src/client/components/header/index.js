@@ -14,7 +14,8 @@ const HeaderView = ({
         <Link to="/" className="navbar-item">
           <img className="Header-logo" src="" alt="Unkind" />
           <h1 className="is-size-4">
-            Unkind S.O.G.
+            <span className="has-text-weight-bold">Unkind</span>
+            <span> S.O.G.</span>
           </h1>
         </Link>
         <div className={`navbar-burger burger ${activeClass}`} onClick={onMenuClick}>

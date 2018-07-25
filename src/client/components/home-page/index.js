@@ -15,13 +15,14 @@ const HomePage = () =>
             <div className="column">
               <h1 className="title is-1">
                 Unkind
+                <span className="has-text-weight-light"> S.O.G.</span>
               </h1>
               <p className="subtitle is-6 is-italic">
                 <span className="HomePage-allcaps">Inter Pericula Intrepidi</span>
                 &mdash;
                 "Fearless in the face of danger"
               </p>
-              <p className="is-size-4">
+              <p className="HomePage-heroline">
                 Unkind Special Operations Group. Magfed paintball. Ontario, Canada.
               </p>
             </div>

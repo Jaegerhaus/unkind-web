@@ -92,6 +92,12 @@ const ProfilePageView = ({
 
 class ProfilePageController extends React.Component {
 
+  constructor(props) {
+    super(props);
+    if (props.user)
+      props.load(props.user.uid);
+  }
+
   componentWillReceiveProps(props) {
     if (props.user && props.user !== this.props.user)
       props.load(props.user.uid);

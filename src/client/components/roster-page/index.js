@@ -31,7 +31,7 @@ const RosterPageView = ({
                   <p className="title">
                     {profile.callsign}
                   </p>
-                  <p className="subtitle">
+                  <p className="subtitle is-7">
                     {profile.loadout}
                   </p>
                 </div>

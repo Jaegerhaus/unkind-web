@@ -70,7 +70,7 @@ const ProfilePhotosView = ({
               </button>
             </div>
             <div className="content">
-              <button className="button is-outlined is-danger" onClick={e => remove(photo)}>
+              <button className="button is-outlined is-danger" onClick={e => remove(selected)}>
                 Delete
               </button>
             </div>
@@ -115,23 +115,48 @@ class ProfilePhotosController extends React.Component {
     const name = file.name;
     const uploaded = new Date();
 
+    const {
+      user,
+      profile,
+      upload,
+      store,
+    } = this.props;
+
     this.setState({ uploading: true });
 
-    this.props.upload(path, file, url => {
+    upload(path, file, url => {
       form.reset();
       this.setState({ uploading: false });
-      this.props.profile.photos.push({
+      profile.photos.push({
         url,
         name,
         uploaded,
       });
-      this.props.store(this.props.user.uid, this.props.profile);
+      store(user.uid, profile);
     });
   }
 
   select(photo) {
     this.setState({
       selected: photo,
+    });
+  }
+
+  remove(photo) {
+    const {
+      user,
+      profile,
+      remove,
+      store,
+    } = this.props;
+
+    remove(photo.url);
+
+    profile.photos = profile.photos.filter(p => p.url !== photo.url);
+    store(user.uid, profile);
+
+    this.setState({
+      selected: null,
     });
   }
 
@@ -152,6 +177,7 @@ class ProfilePhotosController extends React.Component {
       ...this.state,
       upload: this.upload.bind(this),
       select: this.select.bind(this),
+      remove: this.remove.bind(this),
       setProfilePhoto: this.setProfilePhoto.bind(this),
     });
   }
@@ -166,6 +192,7 @@ const mapState = state => ({
 const mapDispatch = dispatch => ({
   upload: (path, file, cb) => dispatch(fileActions.upload(path, file, cb)),
   store: (uid, profile) => dispatch(profileActions.store(uid, profile)),
+  remove: path => dispatch(fileActions.remove(path)),
 });
 
 const ProfilePhotos = connect(mapState, mapDispatch)(ProfilePhotosController);

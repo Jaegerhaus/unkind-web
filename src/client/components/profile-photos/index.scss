@@ -5,6 +5,10 @@
     margin-bottom: 1em;
   }
 
+  figure.image img {
+    object-fit: cover;
+  }
+
   &-photos {
     img {
       cursor: pointer;

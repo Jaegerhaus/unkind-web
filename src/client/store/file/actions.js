@@ -12,6 +12,11 @@ const uploaded = (path, data) => ({
   payload: data,
 });
 
+const removed = path => ({
+  type: types.FILE_REMOVED,
+  meta: { path },
+});
+
 const upload = (path, file, callback) => (dispatch, getState, services) => {
   dispatch(uploading(path, { name: file.name, progress: 0 }));
   const task =
@@ -38,8 +43,17 @@ const upload = (path, file, callback) => (dispatch, getState, services) => {
     );
 };
 
+const remove = url => (dispatch, getState, services) =>
+  services.fileService
+    .remove(url)
+    .then(path =>
+      dispatch(removed(path))
+    );
+
+
 export default {
   upload,
   uploading,
   uploaded,
+  remove,
 };

@@ -11,6 +11,15 @@ class FileService {
       .ref(path)
       .put(file);
   }
+
+  remove(url) {
+    const ref = this._firebase
+      .storage()
+      .refFromURL(url);
+    return ref
+      .delete()
+      .then(() => ref.fullPath);
+  }
 }
 
 export default FileService;

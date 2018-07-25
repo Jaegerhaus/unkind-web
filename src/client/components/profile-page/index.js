@@ -5,6 +5,7 @@ import Header from "components/header";
 import ApplicationForm from "components/application-form";
 import ProfileForm from "components/profile-form";
 import ProfilePhotos from "components/profile-photos";
+import ProfileVideos from "components/profile-videos";
 
 import {
   actions as authActions,
@@ -79,6 +80,9 @@ const ProfilePageView = ({
             </div>
             <div className="column is-half">
 
+              {user.roles.includes("member") &&
+                <ProfileVideos />
+              }
               {user.roles.includes("member") &&
                 <ProfilePhotos />
               }

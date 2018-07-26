@@ -9,6 +9,7 @@ import ErrorPage from "components/error-page";
 import ProfilePage from "components/profile-page";
 import RosterPage from "components/roster-page";
 import MediaPage from "components/media-page";
+import EventsPage from "components/events-page";
 
 import RouteHandler from "./handler";
 
@@ -21,6 +22,7 @@ export default (
       <Route path="/profile" component={ProfilePage} />
       <Route path="/roster" component={RosterPage} />
       <Route path="/media" component={MediaPage} />
+      <Route path="/events" component={EventsPage} />
       <Route component={ErrorPage} />
     </Switch>
   </div>

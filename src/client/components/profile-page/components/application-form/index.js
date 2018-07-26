@@ -12,48 +12,46 @@ const ApplicationFormView = ({
   updated,
 }) =>
   <section className="section ApplicationForm">
-    <div className="container">
-      <h2 className="title">
-        Application
-      </h2>
-      <form onSubmit={submit}>
-        <div className="field">
-          <label className="label">
-            About yourself
+    <h2 className="title">
+      Application
+    </h2>
+    <form onSubmit={submit}>
+      <div className="field">
+        <label className="label">
+          About yourself
+        </label>
+        <div className="control">
+          <textarea className="textarea" value={form.summary} onChange={update("summary")}></textarea>
+        </div>
+      </div>
+      <div className="field">
+        <label className="label">
+          Date of birth
+        </label>
+        <div className="control">
+          <input type="text" className="input" value={form.birthdate} onChange={update("birthdate")} />
+        </div>
+      </div>
+      <div className="field">
+        <div className="control">
+          <label className="checkbox">
+            <input type="checkbox" value={form.agreed} onChange={update("agreed")} />
+            &nbsp; I agree to whatever you say
           </label>
-          <div className="control">
-            <textarea className="textarea" value={form.summary} onChange={update("summary")}></textarea>
-          </div>
         </div>
-        <div className="field">
-          <label className="label">
-            Date of birth
-          </label>
-          <div className="control">
-            <input type="text" className="input" value={form.birthdate} onChange={update("birthdate")} />
-          </div>
+      </div>
+      <div className="field is-grouped is-grouped-right">
+        <div className="control">
+          <span className="is-size-7">
+            {updated ? moment(updated).fromNow() : ""}
+          </span>
+          &nbsp;
+          <button className={`button is-success ${loading ? "is-loading" : ""}`}>
+            {updated ? "Submitted" : "Submit"}
+          </button>
         </div>
-        <div className="field">
-          <div className="control">
-            <label className="checkbox">
-              <input type="checkbox" value={form.agreed} onChange={update("agreed")} />
-              &nbsp; I agree to whatever you say
-            </label>
-          </div>
-        </div>
-        <div className="field is-grouped is-grouped-right">
-          <div className="control">
-            <span className="is-size-7">
-              {updated ? moment(updated).fromNow() : ""}
-            </span>
-            &nbsp;
-            <button className={`button is-success ${loading ? "is-loading" : ""}`}>
-              {updated ? "Submitted" : "Submit"}
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </section>;
 
 @injectServices

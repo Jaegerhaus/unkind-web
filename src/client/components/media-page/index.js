@@ -22,7 +22,7 @@ const MediaPageView = ({
         </h2>
         <div className="MediaPage-videos columns is-multiline is-mobile is-centered">
           {profiles.map(profile =>
-            profile.videos.map(video =>
+            (profile.videos || []).map(video =>
               <div className="column is-one-quarter-desktop is-one-third-tablet is-one-third-mobile" key={video.url}>
                 <div className="card">
                   <div className="card-image">
@@ -43,7 +43,7 @@ const MediaPageView = ({
         </h2>
         <div className="MediaPage-photos columns is-multiline is-mobile is-centered">
           {profiles.map(profile =>
-            profile.photos.map(photo =>
+            (profile.photos || []).map(photo =>
               <div className="column is-one-quarter-desktop is-one-third-tablet is-one-third-mobile" key={photo.url}>
                 <div className="card">
                   <div className="card-image">

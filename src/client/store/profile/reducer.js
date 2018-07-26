@@ -16,12 +16,12 @@ const loading = (state, action) =>
 
 const loaded = (state, action) =>
   Object.assign({}, state, {
-    data: action.payload,
+    data: action.payload || {},
   });
 
 const loadedAll = (state, action) =>
   Object.assign({}, state, {
-    all: action.payload,
+    all: action.payload || [],
   });
 
 export default (state, action) => {

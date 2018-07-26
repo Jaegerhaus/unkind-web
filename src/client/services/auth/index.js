@@ -26,8 +26,7 @@ class AuthService {
       .doc(`roles/${user.uid}`)
       .get()
       .then(roles => {
-        if (roles.exists)
-          user.roles = roles.data().in;
+        user.roles = roles.exists ? roles.data().in : [];
         return user;
       });
   }

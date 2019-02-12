@@ -22,7 +22,7 @@ const RosterPageView = ({
           <div className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile" key={profile.callsign}>
             <div className="card RosterPage-profile">
               <div className="card-image">
-                <figure className="image">
+                <figure className="image is-square">
                   <img src={profile.photoURL} alt={profile.callsign} />
                 </figure>
               </div>

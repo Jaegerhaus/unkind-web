@@ -16,8 +16,16 @@
 @import "./variables";
 
 @import "bulma/bulma";
-@import "bulma-carousel/dist/css/bulma-carousel";
 @import "font-awesome/scss/font-awesome";
+
+.is-smallcaps {
+  font-variant: small-caps;
+}
+
+figure.image img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
 
 .Header {
   &-logo {

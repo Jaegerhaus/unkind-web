@@ -1,21 +1,24 @@
 
 .HomePage {
+
   &-content {
     .column p {
       text-align: justify;
     }
   }
+
   &-heroLogo {
     content: url("../../scss/img/logo.png");
     max-width: 100%;
   }
-  &-allcaps {
-    font-variant: small-caps;
-    font-size: 1.2em;
-  }
+  
   &-heroline {
     font-size: 1.5em;
     padding-top: 5%;
+  }
+
+  &-carousel {
+    height: 40vw;
   }
 }
 

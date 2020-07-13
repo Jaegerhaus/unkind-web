@@ -1,8 +1,8 @@
 {
-  "name": "Unkind",
+  "name": "unkind-web",
   "version": "0.1.0",
   "description": "",
-  "repository": "https://github.com/jkoreska/unkind",
+  "repository": "https://github.com/jaegerhaus/unkind-web",
   "author": "Unkind",
   "license": "MIT",
   "scripts": {

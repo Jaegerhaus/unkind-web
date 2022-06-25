@@ -15,7 +15,7 @@
     "handlebars": "^4.0.6",
     "mini-css-extract-plugin": "^0.4.1",
     "moment": "^2.22.2",
-    "node-fetch": "^2.1.2",
+    "node-fetch": "^2.6.7",
     "unzip": "^0.1.11",
     "uuid": "^3.3.2",
     "webpack-merge": "^4.1.3"
